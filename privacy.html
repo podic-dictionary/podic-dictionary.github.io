@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>隐私政策 · Podic 词典</title>
+<meta name="description" content="Podic 词典隐私政策：不收集任何数据。无账号、无统计、无广告；查词完全离线，数据只保存在设备上。">
+<link rel="icon" type="image/png" href="assets/icon.png">
+<style>
+:root{
+  --paper:#f6f1e6; --paper-2:#efe7d4; --ink:#2c2418; --ink-soft:#6f6250;
+  --seal:#b8441f; --seal-deep:#9c3a19; --line:rgba(120,80,40,.22); --card:#fffdf7;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#171310; --paper-2:#1f1a15; --ink:#ece4d4; --ink-soft:#a4977f;
+    --seal:#d4552a; --seal-deep:#b8441f; --line:rgba(210,170,120,.20); --card:#211b15;
+  }
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",STSong,Georgia,serif;
+  background:radial-gradient(1200px 500px at 85% -10%, var(--paper-2), transparent 60%), var(--paper);
+  color:var(--ink); line-height:1.85;
+}
+.wrap{max-width:760px;margin:0 auto;padding:56px 24px 72px}
+h1{font-size:34px;letter-spacing:3px;display:flex;align-items:center;gap:16px}
+.seal{width:44px;height:44px;border-radius:10px;flex:none;
+  background:linear-gradient(145deg,var(--seal),var(--seal-deep));color:#f6f1e6;
+  display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:700}
+.lead{color:var(--ink-soft);margin:18px 0 8px}
+h2{font-size:21px;letter-spacing:2px;margin:38px 0 14px;color:var(--seal-deep)}
+@media (prefers-color-scheme: dark){ h2{color:var(--seal)} }
+ul{padding-left:22px}
+li{margin:8px 0}
+strong{letter-spacing:.5px}
+a{color:var(--seal);text-decoration:none}
+a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 30px;margin-top:22px}
+code{font-family:ui-monospace,monospace;font-size:14px;
+  background:color-mix(in srgb, var(--seal) 9%, transparent);padding:2px 8px;border-radius:6px}
+footer{margin-top:52px;border-top:1px solid var(--line);padding-top:22px;
+  color:var(--ink-soft);font-size:14px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1><span class="seal">典</span>Podic 隐私政策</h1>
+  <p class="lead">Podic 是一款开源词典应用（英 / 法 / 日 ↔ 中文）。我们非常重视你的隐私：</p>
+
+  <div class="card">
+    <h2>我们不收集任何数据</h2>
+    <ul>
+      <li><strong>无账号体系</strong>：不需要注册、登录，也不存在用户身份标识。</li>
+      <li><strong>无统计分析</strong>：应用不内置任何统计、埋点或崩溃上报 SDK。</li>
+      <li><strong>无广告与跟踪</strong>：应用不包含广告组件与第三方跟踪器。</li>
+    </ul>
+
+    <h2>数据保存在哪里</h2>
+    <ul>
+      <li><strong>词典查询</strong>：完全在设备本地完成，查询词不出设备。</li>
+      <li><strong>生词本 / 设置 / 历史记录</strong>：仅保存在设备本地的应用数据目录中，不会上传。</li>
+      <li><strong>卸载应用</strong>即彻底删除上述全部本地数据。</li>
+    </ul>
+
+    <h2>可选的 AI 功能</h2>
+    <p>应用支持用户<strong>自行配置</strong>第三方 AI 服务（OpenAI 兼容 / Anthropic 兼容接口）以启用深度讲解、例句生成、释义补全与翻译等增强能力：</p>
+    <ul>
+      <li>仅当<strong>你主动使用</strong>这些功能时，对应文本才会发送到你<strong>自己配置</strong>的服务地址；</li>
+      <li>API Key 仅保存在你设备本地的应用配置中，应用作者与任何第三方均无法获取；</li>
+      <li>不配置 AI 服务时，上述增强功能完全不可用，应用其余功能不受影响。</li>
+    </ul>
+
+    <h2>开源</h2>
+    <p>应用源代码与词典数据管道公开可审计：<a href="https://github.com/podic-dictionary">github.com/podic-dictionary</a></p>
+
+    <h2>联系方式</h2>
+    <p>如有隐私相关问题，请通过应用商店页面提供的联系方式，或在上述开源仓库提交 issue。</p>
+  </div>
+
+  <footer>
+    <span>© 2026 Podic · 拾字为舟</span>
+    <span><a href="/">← 返回主页</a></span>
+  </footer>
+</div>
+</body>
+</html>
