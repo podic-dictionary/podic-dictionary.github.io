@@ -56,7 +56,7 @@ header{padding:88px 0 66px;text-align:center}
 h1{font-size:52px;letter-spacing:4px;line-height:1.25}
 h1 small{display:block;font-size:19px;color:var(--ink-soft);letter-spacing:10px;margin-top:14px;font-weight:400}
 .langs{margin:26px 0 38px;color:var(--seal);font-size:19px;letter-spacing:3px}
-.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:stretch}
 .btn{display:inline-flex;align-items:center;gap:9px;padding:12px 26px;border-radius:10px;
   border:1.5px solid var(--seal);font-size:16px;letter-spacing:1px}
 .btn.solid{background:linear-gradient(145deg,var(--seal),var(--seal-deep));color:#f6f1e6;
@@ -65,9 +65,42 @@ h1 small{display:block;font-size:19px;color:var(--ink-soft);letter-spacing:10px;
 .btn.ghost{color:var(--seal)}
 .btn.ghost:hover{background:color-mix(in srgb, var(--seal) 8%, transparent);text-decoration:none}
 button.btn{font-family:inherit;cursor:pointer;background:none}
-.ver{font:12px/1 ui-monospace,SFMono-Regular,Consolas,monospace;opacity:.85;margin-left:4px}
+.ver{font:12.5px/1 ui-monospace,SFMono-Regular,Consolas,monospace;opacity:.85}
 .ver:empty{display:none}
 .cta-note{margin-top:20px;color:var(--ink-soft);font-size:14.5px}
+
+/* 平台卡片：Google 卡（Play 内测入口 + APK 下载）与 iOS 卡（App Store） */
+.dl-card{width:100%;max-width:450px;background:var(--card);border:1px solid var(--line);
+  border-radius:14px;box-shadow:var(--card-shadow);padding:18px 20px;text-align:left;
+  display:flex;flex-direction:column}
+.store-row{display:flex;align-items:center;gap:11px;width:100%;padding:0 0 14px;
+  margin-bottom:14px;border:0;border-bottom:1px solid var(--line);background:none;
+  color:var(--ink);font:inherit;font-size:16px;letter-spacing:1px;cursor:pointer;text-align:left}
+.store-row:hover{color:var(--seal);text-decoration:none}
+.store-row .icon{width:22px;height:22px;flex:none;color:var(--seal)}
+.store-row .hint{margin-left:auto;color:var(--seal);font-size:13.5px;letter-spacing:.5px}
+.ios-card{max-width:340px;display:flex;align-items:center;justify-content:center;gap:14px;
+  color:var(--ink);text-decoration:none;padding:18px 24px}
+.ios-card:hover{text-decoration:none;color:var(--seal);
+  background:color-mix(in srgb, var(--seal) 5%, var(--card))}
+.ios-card .icon{width:36px;height:36px;flex:none;color:var(--seal)}
+.ios-card b{display:block;font-size:17px;letter-spacing:1px}
+.ios-card span{color:var(--ink-soft);font-size:13.5px}
+.dl-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
+.dl-head b{font-size:17px;letter-spacing:1px}
+.dl-head span{color:var(--ink-soft);font-size:13.5px}
+.dl-actions{display:flex;gap:10px;flex-wrap:wrap}
+.dl-btn{display:inline-flex;align-items:center;justify-content:center;flex:1;gap:8px;padding:10px 16px;border-radius:9px;
+  border:1.5px solid var(--seal);color:var(--seal);font-size:14.5px;letter-spacing:.5px;
+  transition:background .15s,transform .15s;white-space:nowrap}
+.dl-btn:hover{background:color-mix(in srgb, var(--seal) 8%, transparent);text-decoration:none;transform:translateY(-1px)}
+.dl-btn.faster{order:-1;background:linear-gradient(145deg,var(--seal),var(--seal-deep));
+  color:#f6f1e6;box-shadow:0 6px 18px rgba(150,60,20,.28)}
+.dl-btn.faster:hover{background:linear-gradient(145deg,var(--seal),var(--seal-deep))}
+.dl-btn .spd{display:none;flex:none}
+.dl-btn.faster .spd{display:block}
+.dl-btn.faster .spd .streak{animation:streak .5s ease-in-out infinite alternate}
+@keyframes streak{from{opacity:.25;transform:translateX(-2px)}to{opacity:.95;transform:translateX(1px)}}
 
 /* 内测说明弹窗 */
 .modal[hidden]{display:none}
@@ -143,12 +176,28 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <h1>拾字为舟<small>干净清爽的开源词典</small></h1>
   <div class="langs">英 · 法 · 日 ↔ 中文</div>
   <div class="cta">
-    <a class="btn solid" data-release-asset href="https://github.com/podic-dictionary/podic/releases/latest">下载 APK<span class="ver" data-release-version></span></a>
-    <a class="btn ghost" data-release-mirror href="https://github.com/podic-dictionary/podic/releases/latest">镜像加速</a>
-    <a class="btn ghost" href="https://apps.apple.com/cn/app/podic-dictionary/id6814098026">iOS · App Store</a>
-    <button class="btn ghost" id="playBtn" type="button">Google Play · 加入内测</button>
+    <div class="dl-card">
+      <button class="store-row" id="playBtn" type="button">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg>
+        Google Play<span class="hint">加入内测 ›</span>
+      </button>
+      <div class="dl-head">
+        <b>下载 APK</b>
+        <span><span class="ver" data-release-version></span>约 <span data-release-size>131</span> MB</span>
+      </div>
+      <div class="dl-actions">
+        <a class="dl-btn" data-release-asset href="https://github.com/podic-dictionary/podic/releases/latest"
+           title="GitHub 官方直链">GitHub 下载<svg class="spd" viewBox="0 0 30 16" width="26" height="14" aria-hidden="true"><g class="streak" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M11 5H6"/><path d="M10 8.5H4.5"/><path d="M11 12H7"/></g><path d="M23 1l-8 8h4.2L16.7 15 25 7h-4.2z" fill="currentColor"/></svg></a>
+        <a class="dl-btn" data-release-mirror href="https://github.com/podic-dictionary/podic/releases/latest"
+           title="ghproxy 镜像加速">镜像加速下载<svg class="spd" viewBox="0 0 30 16" width="26" height="14" aria-hidden="true"><g class="streak" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M11 5H6"/><path d="M10 8.5H4.5"/><path d="M11 12H7"/></g><path d="M23 1l-8 8h4.2L16.7 15 25 7h-4.2z" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+    <a class="dl-card ios-card" href="https://apps.apple.com/cn/app/podic-dictionary/id6814098026">
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.8086 14.9194l6.1107-11.0368c.0837-.1513.1682-.302.2437-.4584.0685-.142.1267-.2854.1646-.4403.0803-.3259.0588-.6656-.066-.9767-.1238-.3095-.3417-.5678-.6201-.7355a1.4175 1.4175 0 0 0-.921-.1924c-.3207.043-.6135.1935-.8443.4288-.1094.1118-.1996.2361-.2832.369-.092.1463-.175.2979-.259.4492l-.3864.6979-.3865-.6979c-.0837-.1515-.1667-.303-.2587-.4492-.0837-.1329-.1739-.2572-.2835-.369-.2305-.2353-.5233-.3857-.844-.429a1.4181 1.4181 0 0 0-.921.1926c-.2784.1677-.4964.426-.6203.7355-.1246.311-.1461.6508-.066.9767.038.155.0962.2984.1648.4403.0753.1564.1598.307.2437.4584l1.248 2.2543-4.8625 8.7825H2.0295c-.1676 0-.3351-.0007-.5026.0092-.1522.009-.3004.0284-.448.0714-.3108.0906-.5822.2798-.7783.548-.195.2665-.3006.5929-.3006.9279 0 .3352.1057.6612.3006.9277.196.2683.4675.4575.7782.548.1477.043.296.0623.4481.0715.1675.01.335.009.5026.009h13.0974c.0171-.0357.059-.1294.1-.2697.415-1.4151-.6156-2.843-2.0347-2.843zM3.113 18.5418l-.7922 1.5008c-.0818.1553-.1644.31-.2384.4705-.067.1458-.124.293-.1611.452-.0785.3346-.0576.6834.0645 1.0029.1212.3175.3346.583.607.7549.2727.172.5891.2416.9013.1975.3139-.044.6005-.1986.8263-.4402.1072-.1148.1954-.2424.2772-.3787.0902-.1503.1714-.3059.2535-.4612L6 19.4636c-.0896-.149-.9473-1.4704-2.887-.9218m20.5861-3.0056a1.4707 1.4707 0 0 0-.779-.5407c-.1476-.0425-.2961-.0616-.4483-.0705-.1678-.0099-.3352-.0091-.503-.0091H18.648l-4.3891-7.817c-.6655.7005-.9632 1.485-1.0773 2.1976-.1655 1.0333.0367 2.0934.546 3.0004l5.2741 9.3933c.084.1494.167.299.2591.4435.0837.131.1739.2537.2836.364.231.2323.5238.3809.8449.4232.3192.0424.643-.0244.9217-.1899.2784-.1653.4968-.4204.621-.7257.1246-.3072.146-.6425.0658-.9641-.0381-.1529-.0962-.2945-.165-.4346-.0753-.1543-.1598-.303-.2438-.4524l-1.216-2.1662h1.596c.1677 0 .3351.0009.5029-.009.1522-.009.3007-.028.4483-.0705a1.4707 1.4707 0 0 0 .779-.5407A1.5386 1.5386 0 0 0 24 16.452a1.539 1.539 0 0 0-.3009-.9158Z"/></svg>
+      <div><b>从 App Store 安装</b><span>iPhone · iPad</span></div>
+    </a>
   </div>
-  <p class="cta-note">APK 约 <span data-release-size>131</span> MB · 下载链路自动测速，直连 GitHub 慢时可切镜像</p>
+  <p class="cta-note">APK 下载链路会在后台测速，带闪电尾巴的入口更快，悬停可看实测耗时</p>
 </header>
 
 <div class="modal" id="playModal" hidden>
@@ -246,7 +295,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     const data = await res.json();
     if (!data || typeof data.tag_name !== 'string') return;
     document.querySelectorAll('[data-release-version]').forEach((el) => {
-      el.textContent = data.tag_name;
+      el.textContent = data.tag_name + ' · ';
     });
     const asset = (data.assets || []).find(a => /\.apk$/i.test(a.name));
     if (!asset) return;
@@ -261,30 +310,50 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         'https://ghfast.top/'];  // 2026-09 实测可用；mirror.ghproxy.com 已失效
     mirrorBtn.href = MIRROR_PREFIXES[0] + asset.browser_download_url;
     // no-cors 探测：拿不到状态码也拿不到 body，abort 挡住下载，流量只有
-    // 一个 RTT；先到者胜出，300ms 宽限看有无并列，随后掐掉其余收榜。
+    // 一个 RTT。结果按到达顺序返回（[0] 为冠军），首个到达后给 300ms 宽限
+    // 看有无并列，随后掐掉其余收榜；全灭则返回空数组。
     const raceLinks = (candidates) => new Promise((resolve) => {
       const racers = candidates.map(c => ({ ...c, ctrl: new AbortController() }));
-      let champion = null;
-      const settle = (winner) => { racers.forEach(r => r.ctrl.abort()); resolve(winner); };
+      const arrived = [];
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        racers.forEach(r => r.ctrl.abort());
+        resolve(arrived);
+      };
       racers.forEach((r) => {
         const started = performance.now();
         fetch(r.url, { mode: 'no-cors', cache: 'no-store', signal: r.ctrl.signal })
             .then(() => {
-              if (champion) return;
-              champion = { prefix: r.prefix || null, ms: Math.round(performance.now() - started) };
-              setTimeout(() => settle(champion), 300);
+              if (done || r.ms != null) return;
+              r.ms = Math.round(performance.now() - started);
+              arrived.push(r);
+              if (arrived.length === 1) setTimeout(finish, 300);
             })
             .catch(() => {});
       });
-      setTimeout(() => { if (!champion) settle(null); }, 4800);
+      setTimeout(finish, 4800);
     });
-    const winner = await raceLinks([{ url: asset.browser_download_url }].concat(
+    const results = await raceLinks([{ url: asset.browser_download_url }].concat(
         MIRROR_PREFIXES.map(prefix => ({ prefix, url: prefix + asset.browser_download_url }))));
-    if (winner && winner.prefix) {
-      // 镜像胜出：两个按钮换样式（镜像变实心主按钮），并指向胜出域名。
-      githubBtn.classList.remove('solid'); githubBtn.classList.add('ghost');
-      mirrorBtn.classList.remove('ghost'); mirrorBtn.classList.add('solid');
-      mirrorBtn.href = winner.prefix + asset.browser_download_url;
+    // 悬停提示写实测耗时；镜像按钮指向最快的镜像域名。
+    const githubHit = results.find(r => !r.prefix);
+    const mirrorHit = results.find(r => r.prefix);
+    githubBtn.title = 'GitHub 官方直链' +
+        (githubHit ? ` · 实测响应 ${githubHit.ms}ms` : '');
+    if (mirrorHit) {
+      mirrorBtn.href = mirrorHit.prefix + asset.browser_download_url;
+      mirrorBtn.title = `ghproxy 镜像加速（${new URL(mirrorHit.prefix).host}）` +
+          ` · 实测响应 ${mirrorHit.ms}ms`;
+    } else {
+      mirrorBtn.title = 'ghproxy 镜像加速';
+    }
+    if (results[0]) {
+      // 冠军：排到最前、换实心样式、亮出闪电尾巴。
+      const winnerBtn = results[0].prefix ? mirrorBtn : githubBtn;
+      winnerBtn.classList.add('faster');
+      winnerBtn.title += ' · 当前最快';
     }
   } catch (_) { /* 保持 releases/latest 兜底链接 */ }
 })();
