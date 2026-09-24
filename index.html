@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Podic 词典 · 拾字为舟 — 开源离线词典（英 / 法 / 日 ↔ 中文）</title>
-<meta name="description" content="Podic 是一款干净清爽的开源词典应用：英、法、日三语与中文互查，完全离线，真实语料例句，可选 AI 增强。无广告、无账号、不收集任何数据。">
+<meta name="description" content="Podic 是一款干净清爽的开源词典应用：英、法、日三语与中文互查，完全离线，真实语料例句，可选 AI 增强。无广告、无账号、不收集任何数据。Android 与 iOS 均可下载。">
 <meta property="og:title" content="Podic 词典 · 拾字为舟">
 <meta property="og:description" content="开源离线词典：英 / 法 / 日 ↔ 中文。真实语料例句，可选 AI 增强，不收集任何数据。">
 <meta property="og:image" content="https://podic-dictionary.github.io/assets/og.png">
@@ -64,7 +64,27 @@ h1 small{display:block;font-size:19px;color:var(--ink-soft);letter-spacing:10px;
 .btn.solid:hover{text-decoration:none;transform:translateY(-1px)}
 .btn.ghost{color:var(--seal)}
 .btn.ghost:hover{background:color-mix(in srgb, var(--seal) 8%, transparent);text-decoration:none}
-.btn.soon{border-color:var(--line);color:var(--ink-soft);cursor:default}
+button.btn{font-family:inherit;cursor:pointer;background:none}
+.ver{font:12px/1 ui-monospace,SFMono-Regular,Consolas,monospace;opacity:.85;margin-left:4px}
+.ver:empty{display:none}
+.cta-note{margin-top:20px;color:var(--ink-soft);font-size:14.5px}
+
+/* 内测说明弹窗 */
+.modal[hidden]{display:none}
+.modal{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-backdrop{position:absolute;inset:0;background:color-mix(in srgb, var(--ink) 45%, transparent);backdrop-filter:blur(3px)}
+.modal-box{position:relative;width:100%;max-width:520px;max-height:86vh;overflow:auto;
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  box-shadow:var(--card-shadow);padding:30px 32px 26px}
+.modal-box h3{font-size:21px;letter-spacing:1px;margin-bottom:14px}
+.modal-box p,.modal-box ol{color:var(--ink-soft);font-size:15px}
+.modal-box ol{margin:12px 0;list-style:decimal-leading-zero;padding-left:22px}
+.modal-box li{margin:9px 0}
+.modal-close{position:absolute;top:14px;right:16px;border:none;background:none;
+  color:var(--ink-soft);font-size:22px;line-height:1;cursor:pointer;padding:4px 8px}
+.modal-close:hover{color:var(--seal)}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.modal-actions .btn{padding:9px 18px;font-size:14.5px}
 
 /* screenshots */
 .shots{padding:20px 0 90px}
@@ -123,11 +143,31 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <h1>拾字为舟<small>干净清爽的开源词典</small></h1>
   <div class="langs">英 · 法 · 日 ↔ 中文</div>
   <div class="cta">
-    <a class="btn solid" href="https://github.com/podic-dictionary/podic/releases/latest">直接下载 APK（GitHub Releases）</a>
-    <span class="btn soon">Android · Google Play 审核中</span>
-    <span class="btn soon">iOS · App Store 审核中</span>
+    <a class="btn solid" data-release-asset href="https://github.com/podic-dictionary/podic/releases/latest">下载 APK<span class="ver" data-release-version></span></a>
+    <a class="btn ghost" data-release-mirror href="https://github.com/podic-dictionary/podic/releases/latest">镜像加速</a>
+    <a class="btn ghost" href="https://apps.apple.com/cn/app/podic-dictionary/id6814098026">iOS · App Store</a>
+    <button class="btn ghost" id="playBtn" type="button">Google Play · 加入内测</button>
   </div>
+  <p class="cta-note">APK 约 <span data-release-size>131</span> MB · 下载链路自动测速，直连 GitHub 慢时可切镜像</p>
 </header>
+
+<div class="modal" id="playModal" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="playModalTitle">
+    <button class="modal-close" type="button" aria-label="关闭" data-close>&times;</button>
+    <h3 id="playModalTitle">Google Play 加入内测</h3>
+    <p>Podic 的 Google Play 版正在封闭测试。按 Google 对个人开发者的要求，需要 12 人连续测试 14 天才能转正式发布。有 Play 账号的朋友，请帮忙凑个人头：</p>
+    <ol>
+      <li>先加入 <a href="https://groups.google.com/g/podic">podic 测试组</a>（Google Group）</li>
+      <li>再<a href="https://play.google.com/apps/testing/com.felix021.podic">点这里加入测试</a>，安装应用</li>
+    </ol>
+    <p>测试中遇到问题，欢迎在 <a href="https://github.com/podic-dictionary/podic/issues">GitHub 提 issue</a>。</p>
+    <div class="modal-actions">
+      <a class="btn solid" href="https://groups.google.com/g/podic">① 加入测试组</a>
+      <a class="btn ghost" href="https://play.google.com/apps/testing/com.felix021.podic">② 加入测试并安装</a>
+    </div>
+  </div>
+</div>
 
 <div class="shots wrap"><div class="rail">
   <div class="phone"><img src="assets/phone-1-search-en.png" alt="英语查词 hi：音标、词性、例句"></div>
@@ -182,6 +222,73 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div>© 2026 Podic · 拾字为舟</div>
   <div><a href="https://github.com/podic-dictionary/podic">github.com/podic-dictionary/podic</a></div>
 </div></footer>
+
+<script>
+'use strict';
+// 内测说明弹窗：点按钮打开，点遮罩 / 关闭键 / Esc 关闭。
+(() => {
+  const modal = document.getElementById('playModal');
+  const open = () => { modal.hidden = false; document.body.style.overflow = 'hidden'; };
+  const close = () => { modal.hidden = true; document.body.style.overflow = ''; };
+  document.getElementById('playBtn').addEventListener('click', open);
+  modal.addEventListener('click', (e) => { if (e.target.closest('[data-close]')) close(); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) close(); });
+})();
+
+// 下载链路：拉 latest release 回填版本号 / APK 直链 / 体积，并给 GitHub
+// 直链与 ghproxy 系镜像竞速，谁先返回响应头谁当默认下载按钮。任何失败
+// 都保持 releases/latest 兜底链接（不拼文件名，tag 内嵌版本易漂移）。
+(async () => {
+  try {
+    const res = await fetch('https://api.github.com/repos/podic-dictionary/podic/releases/latest',
+        {headers: {Accept: 'application/vnd.github+json'}});
+    if (!res.ok) return;
+    const data = await res.json();
+    if (!data || typeof data.tag_name !== 'string') return;
+    document.querySelectorAll('[data-release-version]').forEach((el) => {
+      el.textContent = data.tag_name;
+    });
+    const asset = (data.assets || []).find(a => /\.apk$/i.test(a.name));
+    if (!asset) return;
+    const githubBtn = document.querySelector('[data-release-asset]');
+    const mirrorBtn = document.querySelector('[data-release-mirror]');
+    githubBtn.href = asset.browser_download_url;
+    document.querySelectorAll('[data-release-size]').forEach((el) => {
+      el.textContent = Math.round(asset.size / 1048576);
+    });
+    // 镜像按钮先给 ghproxy.net 兜底；竞速冠军出炉后再改指胜出域名。
+    const MIRROR_PREFIXES = ['https://ghproxy.net/', 'https://gh-proxy.com/',
+        'https://ghfast.top/'];  // 2026-09 实测可用；mirror.ghproxy.com 已失效
+    mirrorBtn.href = MIRROR_PREFIXES[0] + asset.browser_download_url;
+    // no-cors 探测：拿不到状态码也拿不到 body，abort 挡住下载，流量只有
+    // 一个 RTT；先到者胜出，300ms 宽限看有无并列，随后掐掉其余收榜。
+    const raceLinks = (candidates) => new Promise((resolve) => {
+      const racers = candidates.map(c => ({ ...c, ctrl: new AbortController() }));
+      let champion = null;
+      const settle = (winner) => { racers.forEach(r => r.ctrl.abort()); resolve(winner); };
+      racers.forEach((r) => {
+        const started = performance.now();
+        fetch(r.url, { mode: 'no-cors', cache: 'no-store', signal: r.ctrl.signal })
+            .then(() => {
+              if (champion) return;
+              champion = { prefix: r.prefix || null, ms: Math.round(performance.now() - started) };
+              setTimeout(() => settle(champion), 300);
+            })
+            .catch(() => {});
+      });
+      setTimeout(() => { if (!champion) settle(null); }, 4800);
+    });
+    const winner = await raceLinks([{ url: asset.browser_download_url }].concat(
+        MIRROR_PREFIXES.map(prefix => ({ prefix, url: prefix + asset.browser_download_url }))));
+    if (winner && winner.prefix) {
+      // 镜像胜出：两个按钮换样式（镜像变实心主按钮），并指向胜出域名。
+      githubBtn.classList.remove('solid'); githubBtn.classList.add('ghost');
+      mirrorBtn.classList.remove('ghost'); mirrorBtn.classList.add('solid');
+      mirrorBtn.href = winner.prefix + asset.browser_download_url;
+    }
+  } catch (_) { /* 保持 releases/latest 兜底链接 */ }
+})();
+</script>
 
 </body>
 </html>
