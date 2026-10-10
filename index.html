@@ -158,52 +158,20 @@ tr:last-child td{border-bottom:none}
 footer{border-top:1px solid var(--line);padding:34px 0 44px;color:var(--ink-soft);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
-/* 可交互 demo */
+/* 可交互 demo：iframe 内嵌真实前端（./demo/），landing 只提供手机框与词条 chips */
 .langs-note{margin:-26px 0 34px;color:var(--ink-soft);font-size:14px;letter-spacing:.5px}
 .demo-hint{text-align:center;color:var(--ink-soft);font-size:14px;margin-bottom:18px}
 .demo{display:flex;gap:36px;justify-content:center;align-items:flex-start;flex-wrap:wrap;padding:10px 0 30px}
-.demo-phone{width:300px;border-radius:30px;padding:10px;background:var(--card);border:1px solid var(--line);
+.demo-phone{width:322px;border-radius:34px;padding:10px;background:var(--card);border:1px solid var(--line);
   box-shadow:var(--card-shadow);overflow:hidden}
-.demo-status{font:11px/1 ui-monospace,monospace;color:var(--ink-soft);padding:6px 10px 4px;text-align:right;opacity:.8}
-.demo-header{display:flex;align-items:center;justify-content:space-between;padding:4px 12px 8px}
-.demo-logo{font-weight:700;letter-spacing:1px;color:var(--seal)}
-.demo-lang{font-size:12px;color:var(--ink-soft)}
-.demo-tabs{display:flex;gap:4px;margin:0 12px 10px;padding:3px;border-radius:10px;background:color-mix(in srgb,var(--ink) 6%,transparent)}
-.dt{flex:1;border:0;background:none;font:inherit;font-size:13px;padding:5px 0;border-radius:8px;cursor:pointer;color:var(--ink-soft)}
-.dt.on{background:var(--card);color:var(--seal);box-shadow:0 1px 4px rgba(90,60,30,.12)}
-.demo-body{height:340px;overflow-y:auto;padding:0 12px;scrollbar-width:thin}
-.demo-nav{display:flex;border-top:1px solid var(--line);margin-top:8px;padding:8px 4px 6px}
-.demo-nav span{flex:1;text-align:center;font-size:11.5px;color:var(--ink-soft)}
-.demo-nav span.on{color:var(--seal);font-weight:600}
+.demo-status{font:11px/1 ui-monospace,monospace;color:var(--ink-soft);padding:6px 10px 6px;text-align:right;opacity:.8}
+.demo-phone iframe{display:block;width:100%;height:560px;border:0;border-radius:22px;background:var(--card)}
 .demo-side{max-width:200px}
 .demo-side-t{font-size:13px;color:var(--ink-soft);margin:0 0 10px}
 .chip{display:block;width:100%;margin-bottom:8px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);
   background:var(--card);color:var(--ink);font:inherit;font-size:14px;text-align:left;cursor:pointer}
 .chip:hover{border-color:var(--seal);color:var(--seal)}
 .chip.ai{border-style:dashed}
-/* demo 内部词条卡（还原 app 配色：纸底 emerald 主色 violet AI） */
-.dw{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--card);margin-bottom:10px;box-sizing:border-box}
-.dw .bar{display:flex;gap:6px;align-items:baseline;flex-wrap:wrap}
-.dw .hw{font-size:20px;font-weight:700}
-.dw .ipa{font-size:13px;color:var(--ink-soft)}
-.dw .pos{font-size:12px;padding:1px 7px;border-radius:6px;background:color-mix(in srgb,#059669 12%,transparent);color:#047857;white-space:nowrap}
-.dark .dw .pos{color:#34d399}
-.dw ol{margin:8px 0 0;padding-left:20px;font-size:13.5px}
-.dw ol li{margin-bottom:4px}
-.dw .eg{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:13px;color:var(--ink-soft)}
-.dw .eg i{display:block;font-style:normal;color:var(--ink);margin-top:3px}
-.dw .ai-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;margin-bottom:8px;
-  background:color-mix(in srgb,#8b5cf6 14%,transparent);color:#7c3aed}
-.dark .dw .ai-tag{color:#c4b5fd}
-.dw.ai{border-color:color-mix(in srgb,#8b5cf6 45%,var(--line))}
-.dsearch{display:flex;gap:8px;margin-bottom:12px}
-.dsearch input{flex:1;border:1px solid var(--line);border-radius:10px;padding:8px 12px;font:inherit;font-size:14px;background:var(--card);color:var(--ink)}
-.dsearch input:focus{outline:none;border-color:var(--seal)}
-.dmiss{padding:22px 8px;text-align:center;color:var(--ink-soft);font-size:13.5px}
-.dmiss button{margin-top:12px;border:1px solid #8b5cf6;color:#7c3aed;background:none;border-radius:10px;padding:7px 16px;font:inherit;font-size:13px;cursor:pointer}
-.dtrans{display:flex;flex-direction:column;gap:10px}
-.dtrans textarea{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;font-size:13.5px;background:var(--card);color:var(--ink);resize:none;min-height:64px}
-.dtrans .out{border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-size:13.5px;color:var(--ink-soft)}
 
 </style>
 </head>
@@ -267,26 +235,24 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </div>
 
-<!-- 可交互 demo：真实界面还原（非截图），预置词条可直接查 -->
+<!-- 可交互 demo：iframe 内嵌真实前端（mock 后端，预置词条），chips 控制深链接 -->
 <div class="shots wrap">
-  <div class="demo-hint">↓ 真的可以点：试试下面的词，或随便输入</div>
+  <div class="demo-hint">↓ 真的可以点：完整应用界面，预置词条与 AI 演示数据</div>
   <div class="demo">
     <div class="demo-phone">
       <div class="demo-status">9:41&nbsp;&nbsp;●●●&nbsp;▮</div>
-      <div class="demo-header"><span class="demo-logo">podic</span><span class="demo-lang">EN ▾</span></div>
-      <div class="demo-tabs"><button class="dt on" data-dt="search">查词</button><button class="dt" data-dt="translate">翻译</button></div>
-      <div class="demo-body" id="demoBody"><!-- JS 渲染 --></div>
-      <div class="demo-nav"><span>设置</span><span>阅读</span><span class="on">查词</span><span>翻译</span><span>生词</span></div>
+      <iframe id="demoFrame" src="./demo/#/search?q=hello&amp;lang=en" title="Podic 界面演示" loading="lazy"></iframe>
     </div>
     <div class="demo-side">
       <p class="demo-side-t">试试这些词</p>
-      <button class="chip" data-q="hello">hello</button>
-      <button class="chip" data-q="bonjour">bonjour</button>
-      <button class="chip" data-q="食べる">食べる</button>
-      <button class="chip" data-q="слово">слово</button>
-      <button class="chip ai" data-q="saudade">saudade · AI 补全</button>
+      <button class="chip" data-q="hello" data-lang="en">hello</button>
+      <button class="chip" data-q="bonjour" data-lang="fr">bonjour</button>
+      <button class="chip" data-q="食べる" data-lang="ja">食べる</button>
+      <button class="chip" data-q="слово" data-lang="ru">слово</button>
+      <button class="chip ai" data-q="saudade" data-lang="fr">saudade · AI 补全</button>
       <p class="demo-side-t">或者</p>
-      <button class="chip" data-dt="translate">看整句翻译</button>
+      <button class="chip" data-text="Life is like reading a dictionary.">看整句翻译</button>
+      <button class="chip" data-hash="#/favorites">看看生词本</button>
     </div>
   </div>
 </div>
@@ -351,69 +317,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 })();
 
 
-// ===== 可交互 demo =====
-const DICT = {
-  hello: { hw: "hello", ipa: "/həˈloʊ/", pos: "int.", senses: ["你好；（见面问候）喂", "（打电话）喂"], eg: ["Hello, how are you today?", "你好，你今天怎么样？"] },
-  bonjour: { hw: "bonjour", ipa: "/bɔ̃ʒuʁ/", pos: "interj.", senses: ["你好；日安（白天问候）", "再见（非正式）"], eg: ["Bonjour, monsieur !", "先生，您好！"] },
-  "食べる": { hw: "食べる", ipa: "たべる", pos: "v.", senses: ["吃（一段动词）"], eg: ["寿司を食べたい。", "（我）想吃寿司。"] },
-  "слово": { hw: "слово", ipa: "/ˈslovə/", pos: "n.", senses: ["词；单词", "话语；发言"], eg: ["Новое слово — новое дело.", "新词带来新气象。"] },
-  "saudade": { ai: true, hw: "saudade", ipa: "/saʊˈdadʒi/", pos: "n.", senses: ["（葡）怀念；乡愁（一种因缺失而生的忧郁眷恋）"], eg: ["Tenho saudade de você.", "我很想你。"] },
-};
-const demoBody = document.getElementById('demoBody');
-let demoTab = 'search', demoQ = 'hello';
-function esc(s){ return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-function renderEntry(e, fromAi){
-  return `<div class="dw${fromAi?' ai':''}">${fromAi?'<span class="ai-tag">AI 补全 · 已存入 AI 词典</span>':''}
-    <div class="bar"><span class="hw">${esc(e.hw)}</span><span class="ipa">${esc(e.ipa)}</span><span class="pos">${esc(e.pos)}</span></div>
-    <ol>${e.senses.map(s=>`<li>${esc(s)}</li>`).join('')}</ol>
-    <div class="eg">${esc(e.eg[0])}<i>${esc(e.eg[1])}</i></div></div>`;
-}
-function renderDemo(){
-  if (demoTab === 'translate') {
-    demoBody.innerHTML = `<div class="dtrans">
-      <textarea>Reading a dictionary is like eating a whole cake at once.</textarea>
-      <div class="out">读词典就像一次吃下一整个蛋糕。</div>
-      <textarea>拾字为舟，渡语言的河。</textarea>
-      <div class="out">Words as a boat, crossing the river of languages.</div></div>`;
-    return;
-  }
-  const q = demoQ.trim();
-  if (!q) { demoBody.innerHTML = `<div class="dmiss">输入一个词开始查词</div>`; return; }
-  const hit = DICT[q.toLowerCase()] || DICT[q];
-  if (hit) { demoBody.innerHTML = renderEntry(hit, !!hit.ai); return; }
-  demoBody.innerHTML = `<div class="dmiss">词典里没有「${esc(q)}」<br><button type="button" id="demoAiBtn">✦ AI 补全</button></div>`;
-  const b = document.getElementById('demoAiBtn');
-  if (b) b.onclick = () => { demoQ = 'saudade'; renderDemo(); };
-}
-function setDemoTab(t){
-  demoTab = t;
-  document.querySelectorAll('.dt').forEach(x => x.classList.toggle('on', x.dataset.dt === t));
-  document.querySelectorAll('.demo-nav span').forEach((x,i) => x.classList.toggle('on', (t==='translate'?3:2)===i));
-  renderDemo();
-}
-document.querySelectorAll('.dt').forEach(x => x.onclick = () => setDemoTab(x.dataset.dt));
-document.querySelectorAll('.chip').forEach(x => x.onclick = () => {
-  if (x.dataset.dt) setDemoTab(x.dataset.dt);
-  else { setDemoTab('search'); demoQ = x.dataset.q;
-    const h = DICT[demoQ];
-    demoBody.innerHTML = `<div class="dsearch"><input id="demoInput" value="${esc(demoQ)}" placeholder="查词…"></div>` + renderEntry(h, !!h.ai);
-    bindInput(); }
-});
-demoBody.innerHTML = `<div class="dsearch"><input id="demoInput" value="hello" placeholder="查词…"></div>` + renderEntry(DICT.hello);
-function bindInput(){
-  const i = document.getElementById('demoInput');
-  if (!i) return;
-  i.oninput = () => { demoQ = i.value;
-    const hit = DICT[i.value.toLowerCase()] || DICT[i.value];
-    const cards = i.value.trim() ? (hit ? renderEntry(hit, !!hit.ai) : `<div class="dmiss">词典里没有「${esc(i.value)}」<br><button type="button" id="demoAiBtn">✦ AI 补全</button></div>`) : `<div class="dmiss">输入一个词开始查词</div>`;
-    const pos = i.selectionStart; i.focus();
-    demoBody.innerHTML = `<div class="dsearch"><input id="demoInput" value="${esc(i.value)}" placeholder="查词…"></div>` + cards;
-    const ni = document.getElementById('demoInput');
-    ni.setSelectionRange(pos, pos); bindInput();
-    const b = document.getElementById('demoAiBtn'); if (b) b.onclick = () => { demoQ='saudade'; renderDemo(); };
-  };
-}
-bindInput();
+// ===== 可交互 demo：chips 通过 hash 深链接控制 iframe 内的真实前端 =====
+(() => {
+  const frame = document.getElementById('demoFrame');
+  const nav = (hash) => { frame.contentWindow.location.hash = hash; };
+  document.querySelectorAll('.chip').forEach((x) => {
+    x.onclick = () => {
+      if (x.dataset.text) nav('#/translate?text=' + encodeURIComponent(x.dataset.text));
+      else if (x.dataset.hash) nav(x.dataset.hash);
+      else nav('#/search?q=' + encodeURIComponent(x.dataset.q) + '&lang=' + (x.dataset.lang || 'en'));
+    };
+  });
+})();
 // ===== /demo =====
 
 // 下载链路：拉 latest release 回填版本号 / APK 直链 / 体积，并给 GitHub
