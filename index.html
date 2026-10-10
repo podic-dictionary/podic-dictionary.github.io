@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Podic 词典 · 拾字为舟 — 开源离线词典（英 / 法 / 日 ↔ 中文）</title>
-<meta name="description" content="Podic 是一款干净清爽的开源词典应用：英、法、日三语与中文互查，完全离线，真实语料例句，可选 AI 增强。无广告、无账号、不收集任何数据。Android 与 iOS 均可下载。">
+<title>Podic 词典 · 拾字为舟 — 开源离线词典（英 / 法 / 日 / 俄 ↔ 中文）</title>
+<meta name="description" content="Podic 是一款干净清爽的开源词典应用：英、法、日、俄语与中文互查，支持注册任意语言，完全离线，真实语料例句，可选 AI 增强。无广告、无账号、不收集任何数据。Android 与 iOS 均可下载。">
 <meta property="og:title" content="Podic 词典 · 拾字为舟">
-<meta property="og:description" content="开源离线词典：英 / 法 / 日 ↔ 中文。真实语料例句，可选 AI 增强，不收集任何数据。">
+<meta property="og:description" content="开源离线词典：英 / 法 / 日 / 俄 ↔ 中文（可自添加语言）。真实语料例句，可选 AI 增强，不收集任何数据。">
 <meta property="og:image" content="https://podic-dictionary.github.io/assets/og.png">
 <link rel="icon" type="image/png" href="assets/icon.png">
 <style>
@@ -174,7 +174,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <header class="wrap">
   <div class="hero-seal">典</div>
   <h1>拾字为舟<small>干净清爽的开源词典</small></h1>
-  <div class="langs">英 · 法 · 日 ↔ 中文</div>
+  <div class="langs">英 · 法 · 日 · 俄 ↔ 中文</div>
   <div class="cta">
     <div class="dl-card">
       <button class="store-row" id="playBtn" type="button">
@@ -229,14 +229,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="kicker">FEATURES</div>
   <h2>一个词典该有的样子</h2>
   <div class="grid">
-    <div class="card"><h3><em>①</em>三语互查</h3>
-      <p>英语 77 万词头带音标与词频；法语带音标、词性、阴阳性与完整屈折变化；日语带汉字表记、假名读音与变形还原（食べた → 食べる）。输入中文也能反查外文词。</p></div>
+    <div class="card"><h3><em>①</em>多语互查</h3>
+      <p>英语 77 万词头带音标与词频；法语带音标、词性、阴阳性与完整屈折变化；日语带汉字表记、假名读音与变形还原（食べた → 食べる）；俄语收录 5000 高频词与常用变位。还能注册任意语言，没有词典包时由 AI 补录词条。输入中文也能反查外文词。</p></div>
     <div class="card"><h3><em>②</em>完全离线</h3>
-      <p>全部词典数据随应用安装，查词不需要网络。生词本、历史、设置都只存在你的设备上。</p></div>
+      <p>英语词典随应用安装，法 / 日 / 俄与其他语言按需一键安装（更新不丢数据），查词不需要网络。生词本、历史、设置都只存在你的设备上。</p></div>
     <div class="card"><h3><em>③</em>真实语料例句</h3>
       <p>例句来自 Tatoeba 开源句库，配人工校对的中文翻译，不是机器拼凑的造句。</p></div>
     <div class="card"><h3><em>④</em>AI 增强（可选）</h3>
-      <p>自带 API Key 即可启用深度讲解、例句生成与释义补全；不配置则完全不影响使用，Key 只存在本机。</p></div>
+      <p>自带 API Key 即可启用深度讲解、例句生成与释义补全；内置 29 家厂商预设（智谱 / DeepSeek / Kimi / MiniMax / OpenAI…）选厂商填 Key 即用。不配置则完全不影响使用，Key 只存在本机。</p></div>
     <div class="card"><h3><em>⑤</em>干净清爽</h3>
       <p>无广告、无开屏、无账号体系、无统计埋点。纸墨排印，只留查词这一件事。</p></div>
     <div class="card"><h3><em>⑥</em>开源可审计</h3>
