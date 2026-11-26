@@ -3,11 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Podic 词典 · 拾字为舟 — 开源离线词典（英 / 法 / 日 / 俄 ↔ 中文）</title>
-<meta name="description" content="Podic 是一款干净清爽的开源词典应用：英、法、日、德、西、俄、意、葡八语与中文互查，支持注册任意语言，完全离线，真实语料例句，可选 AI 增强。无广告、无账号、不收集任何数据。Android 与 iOS 均可下载。">
-<meta property="og:title" content="Podic 词典 · 拾字为舟">
-<meta property="og:description" content="开源离线词典：英 / 法 / 日 / 俄 ↔ 中文（可自添加语言）。真实语料例句，可选 AI 增强，不收集任何数据。">
-<meta property="og:image" content="https://podic-dictionary.github.io/assets/og.png">
+<title>Podic 词典 · 拾字为舟 — 八语离线词典、朗读、生词练习与词汇量自测</title>
+<meta name="description" content="Podic 是一款干净清爽的开源词典：英、法、日、德、西、俄、意、葡八语离线查词，支持本地朗读、生词练习、词汇量自测与每日一句，例句来自真实语料，可选 AI 增强。无广告、无账号、不收集任何数据。Android 与 iOS 均可下载。">
+<link rel="canonical" href="https://podic.oh-my-term.cn/">
+<meta property="og:title" content="Podic 词典 · 拾字为舟 — 八语离线词典">
+<meta property="og:description" content="八语离线查词、本地朗读、生词练习、词汇量自测与每日一句。无广告、无账号、不收集任何数据。">
+<meta property="og:url" content="https://podic.oh-my-term.cn/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://podic.oh-my-term.cn/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://podic.oh-my-term.cn/assets/og.png">
+<meta name="theme-color" content="#f6f1e6">
 <link rel="icon" type="image/png" href="assets/icon.png">
 <style>
 :root{
@@ -46,6 +52,13 @@ nav .wrap{display:flex;align-items:center;gap:26px;height:60px}
 .brand{font-weight:700;font-size:19px;letter-spacing:1px;margin-right:auto}
 nav a.item{color:var(--ink-soft);font-size:15px}
 nav a.item:hover{color:var(--seal);text-decoration:none}
+@media (max-width:640px){
+  nav .wrap{gap:12px;height:56px}
+  nav a.item{font-size:13.5px}
+  nav a.item.secondary{display:none}
+  .brand{display:none}
+  .langs{font-size:16px;letter-spacing:1px;line-height:1.9}
+}
 
 /* hero */
 header{padding:88px 0 66px;text-align:center}
@@ -54,7 +67,8 @@ header{padding:88px 0 66px;text-align:center}
   color:#f6f1e6;display:flex;align-items:center;justify-content:center;font-size:64px;font-weight:700;
   box-shadow:0 14px 34px rgba(150,60,20,.30), inset 0 2px 6px rgba(255,255,255,.25)}
 h1{font-size:52px;letter-spacing:4px;line-height:1.25}
-h1 small{display:block;font-size:19px;color:var(--ink-soft);letter-spacing:10px;margin-top:14px;font-weight:400}
+h1 small{display:block;font-size:19px;color:var(--ink-soft);letter-spacing:4px;margin-top:14px;font-weight:400}
+@media (max-width:640px){h1 small{font-size:16px;letter-spacing:2px}}
 .langs{margin:26px 0 38px;color:var(--seal);font-size:19px;letter-spacing:3px}
 .cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:stretch}
 .btn{display:inline-flex;align-items:center;gap:9px;padding:12px 26px;border-radius:10px;
@@ -102,16 +116,8 @@ button.btn{font-family:inherit;cursor:pointer;background:none}
 .dl-btn.faster .spd .streak{animation:streak .5s ease-in-out infinite alternate}
 @keyframes streak{from{opacity:.25;transform:translateX(-2px)}to{opacity:.95;transform:translateX(1px)}}
 
-/* screenshots */
+/* 在线试玩 */
 .shots{padding:20px 0 90px}
-.rail{display:flex;gap:26px;justify-content:center;flex-wrap:wrap}
-.phone{width:250px;border-radius:24px;padding:8px;background:var(--card);
-  border:1px solid var(--line);box-shadow:var(--card-shadow)}
-.phone img{width:100%;border-radius:17px;display:block}
-.rail .phone:nth-child(1){transform:rotate(-2.2deg) translateY(12px)}
-.rail .phone:nth-child(2){transform:rotate(1.4deg)}
-.rail .phone:nth-child(3){transform:rotate(-1.2deg) translateY(6px)}
-.rail .phone:nth-child(4){transform:rotate(2deg) translateY(14px)}
 
 /* sections */
 section{padding:74px 0;border-top:1px solid var(--line)}
@@ -119,12 +125,17 @@ section{padding:74px 0;border-top:1px solid var(--line)}
 h2{font-size:32px;letter-spacing:2px;margin-bottom:34px}
 
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media (max-width:760px){.grid{grid-template-columns:1fr}.h1{font-size:40px}h1{font-size:38px}}
+.grid.two{grid-template-columns:repeat(2,1fr)}
+@media (max-width:760px){.grid,.grid.two{grid-template-columns:1fr}h1{font-size:38px}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
   padding:24px 22px;box-shadow:var(--card-shadow)}
 .card h3{font-size:19px;margin-bottom:8px;letter-spacing:1px}
 .card h3 em{font-style:normal;color:var(--seal);margin-right:8px;font-size:16px}
 .card p{color:var(--ink-soft);font-size:15px}
+.card ul{margin:0;padding-left:1.15em;color:var(--ink-soft);font-size:15px}
+.card li{margin:5px 0}
+.more{margin-top:22px;font-size:14.5px;text-align:right}
+.endcta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
 
 table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
   border-radius:14px;overflow:hidden;box-shadow:var(--card-shadow)}
@@ -143,7 +154,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 /* 可交互 demo：iframe 内嵌真实前端（./demo/），landing 只提供手机框与词条 chips */
 .langs-note{margin:-26px 0 34px;color:var(--ink-soft);font-size:14px;letter-spacing:.5px}
-.demo-hint{text-align:center;color:var(--ink-soft);font-size:14px;margin-bottom:18px}
+.demo-hint{text-align:center;color:var(--ink-soft);font-size:14px;max-width:680px;margin:0 auto 18px}
 .demo{display:flex;gap:36px;justify-content:center;align-items:flex-start;flex-wrap:wrap;padding:10px 0 30px}
 .demo-phone{width:322px;border-radius:34px;padding:10px;background:var(--card);border:1px solid var(--line);
   box-shadow:var(--card-shadow);overflow:hidden}
@@ -164,17 +175,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="seal">典</div>
   <div class="brand">Podic 词典</div>
   <a class="item" href="#features">特性</a>
-  <a class="item" href="#shots">截图</a>
-  <a class="item" href="#data">数据来源</a>
+  <a class="item" href="#demo">在线试玩</a>
+  <a class="item" href="#updates">更新</a>
+  <a class="item secondary" href="#data">数据来源</a>
   <a class="item" href="#privacy">隐私</a>
   <a class="item" href="https://github.com/podic-dictionary/podic">GitHub</a>
 </div></nav>
 
 <header class="wrap">
   <div class="hero-seal">典</div>
-  <h1>拾字为舟<small>干净清爽的开源词典</small></h1>
-  <div class="langs">任意语言* ↔ 中文</div>
-  <p class="langs-note">* 内置英 / 法 / 日 / 俄……等语言词典，其他语言可由 AI 补全</p>
+  <h1>拾字为舟<small>八语离线词典 · 查得到，也记得住</small></h1>
+  <div class="langs">英 · 法 · 日 · 德 · 西 · 俄 · 意 · 葡 ↔ 中文</div>
+  <p class="langs-note">八语词库可离线安装，其他语言由 AI 补录词条</p>
   <div class="cta">
     <div class="dl-card">
       <a class="store-row" href="https://play.google.com/store/apps/details?id=com.felix021.podic">
@@ -198,18 +210,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </a>
   </div>
   <p class="cta-note">
-    iOS 版暂未上架中国区 App Store（应用备案办理中），请使用<b>非中国区 Apple ID</b> 下载。<br>
-    国内网络访问不了 Google Play 时，可直接下载 APK 安装——链接后台自动测速，带闪电尾巴的入口更快。
+    <a href="#demo">先在线试玩，不用装包 ↓</a><br>
+    iOS 版暂未上架中国区 App Store，请使用<b>非中国区 Apple ID</b> 下载。<br>
+    国内访问不了 Google Play 时可直接装 APK——链接后台自动测速，带闪电标记的入口更快。
   </p>
 </header>
 
 <!-- 可交互 demo：iframe 内嵌真实前端（mock 后端，预置词条），chips 控制深链接 -->
-<div class="shots wrap">
-  <div class="demo-hint">在线体验 demo——完整应用界面，预置词条与 AI 演示数据</div>
+<div id="demo" class="shots wrap">
+  <div class="demo-hint">不用装包，直接试查词和翻译；生词本右上角的「测验」里还有生词练习和词汇量自测</div>
   <div class="demo">
     <div class="demo-phone">
       <div class="demo-status">9:41&nbsp;&nbsp;●●●&nbsp;▮</div>
-      <iframe id="demoFrame" src="./demo/#/search?q=hello&amp;lang=en" title="Podic 界面演示" loading="lazy"></iframe>
+      <iframe id="demoFrame" src="./demo/#/search?q=hello&amp;lang=en" title="Podic 界面演示"></iframe>
     </div>
     <div class="demo-side">
       <p class="demo-side-t">试试这些词</p>
@@ -219,30 +232,52 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <button class="chip" data-q="слово" data-lang="ru">слово</button>
       <button class="chip" data-q="saudade" data-lang="pt">saudade</button>
       <button class="chip ai" data-q="Sehnsucht" data-lang="de">Sehnsucht · AI 补全</button>
-      <p class="demo-side-t">或者</p>
+      <p class="demo-side-t">翻译与学习</p>
       <button class="chip" data-text="Life is like reading a dictionary.">看整句翻译</button>
-      <button class="chip" data-hash="#/favorites">看看生词本</button>
+      <button class="chip" data-hash="#/favorites">生词本 · 练习与测词</button>
     </div>
   </div>
 </div>
 
 <section id="features"><div class="wrap">
   <div class="kicker">FEATURES</div>
-  <h2>一个词典该有的样子</h2>
+  <h2>从查到一个词，到真正记住它</h2>
   <div class="grid">
-    <div class="card"><h3><em>①</em>多语互查</h3>
-      <p>英语 77 万词头带音标与词频；法语带音标、词性、阴阳性与完整屈折变化；日语带汉字表记、假名读音与变形还原（食べた → 食べる）；德 / 西 / 俄 / 意 / 葡收录 2～3.4 万高频词（AI 生成释义）。还能注册任意语言，没有词典包时由 AI 补录词条。输入中文也能反查外文词。</p></div>
-    <div class="card"><h3><em>②</em>离线词典 + AI 补全</h3>
-      <p>英语词典随应用安装，法 / 日 / 俄与其他语言按需一键安装（更新不丢数据），查词不需要网络；没有词典的语言由 AI 现场补全并沉淀为词条。生词本、历史、设置都只存在你的设备上。</p></div>
-    <div class="card"><h3><em>③</em>真实语料例句</h3>
-      <p>例句来自 Tatoeba 开源句库，配人工校对的中文翻译，不是机器拼凑的造句。</p></div>
-    <div class="card"><h3><em>④</em>AI 增强（可选）</h3>
-      <p>自带 API Key 即可启用深度讲解、例句生成与释义补全；内置 29 家厂商预设（智谱 / DeepSeek / Kimi / MiniMax / OpenAI…）选厂商填 Key 即用。不配置则完全不影响使用，Key 只存在本机。</p></div>
-    <div class="card"><h3><em>⑤</em>干净清爽</h3>
-      <p>无广告、无开屏、无账号体系、无统计埋点。纸墨排印，只留查词这一件事。</p></div>
-    <div class="card"><h3><em>⑥</em>开源可审计</h3>
-      <p>应用源码与词典数据管道全部公开，数据源授权逐一署名，任何人都可以复核。</p></div>
+    <div class="card"><h3><em>①</em>八语离线查词</h3>
+      <p>英语 77 万词头带音标与词频；法语带音标、词性、阴阳性与完整屈折变化；日语能还原变形（食べた → 食べる）；德、西、俄、意、葡各收近 2～3 万高频词。八语词典包按需安装，装好断网也能查；没有词典的语言还能让 AI 补录。输入中文可反查外文。</p></div>
+    <div class="card"><h3><em>②</em>阅读时点词即查</h3>
+      <p>把文章粘进来，或直接从网页抓取，自动分词排版；点任意单词就地查词、收进生词本，不用来回切换。长文读到哪会记住，切回应用接着读。</p></div>
+    <div class="card"><h3><em>③</em>生词练习与词汇量自测</h3>
+      <p>收进生词本的词可以直接练：词义、拼写、听音三种题型，按熟练度出题并自动升级。还能按词频分层抽样做词汇量自测，几次结果连成趋势线。点「典」印章还有每日一句，词典例句优先，AI 单句兜底。</p></div>
+    <div class="card"><h3><em>④</em>本地朗读，自选音色</h3>
+      <p>内置离线语音引擎，没网也能读单词和例句；系统语音缺语音包时自动顶上。每种语言都能单独选引擎、音色和语速。</p></div>
+    <div class="card"><h3><em>⑤</em>真实例句，AI 只在需要时出场</h3>
+      <p>例句优先用 Tatoeba 开源句库与人工校对译文。词条没有例句时，可以在原位让 AI 生成并标注「AI 生成」。自带 API Key 可开启深度讲解与释义补全，内置 30 多家厂商预设，不配置也不影响查词。</p></div>
+    <div class="card"><h3><em>⑥</em>干净、开源、不收集数据</h3>
+      <p>无广告、无开屏、无账号、无统计埋点。应用源码和词典数据管道全部公开，数据源授权逐一署名，任何人都能复核。</p></div>
   </div>
+</div></section>
+
+<section id="updates"><div class="wrap">
+  <div class="kicker">UPDATES</div>
+  <h2>最近更新</h2>
+  <div class="grid two">
+    <div class="card"><h3><em>0.6.0</em>离线语音 + 查词体验</h3>
+      <ul>
+        <li>新增离线 TTS 引擎，按语言选引擎、音色与语速</li>
+        <li>词汇量自测新增历史记录，可和上次同语言结果对比趋势</li>
+        <li>词条没有例句时，可在原位生成 AI 例句并标注来源</li>
+        <li>翻译框一键清空；点顶栏语言直达查词输入框</li>
+      </ul></div>
+    <div class="card"><h3><em>0.5.0</em>生词练习 + 词汇量自测 + 每日一句</h3>
+      <ul>
+        <li>生词练习：词义、拼写、听音三题型，熟练度自动升级</li>
+        <li>词汇量自测：按词频分层抽样，估算词汇量</li>
+        <li>每日一句：点「典」印章随机抽词学一句</li>
+        <li>原生 TTS 朗读；切回应用保持上次所在页面</li>
+      </ul></div>
+  </div>
+  <p class="more"><a href="https://github.com/podic-dictionary/podic/releases">查看全部版本与安装包 →</a></p>
 </div></section>
 
 <section id="data"><div class="wrap">
@@ -256,6 +291,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <tr><td><a href="https://tatoeba.org">Tatoeba</a></td><td>多语种真实例句与中文译文</td><td><span class="tag">CC BY 2.0 FR</span></td></tr>
     <tr><td><a href="http://www.lexique.org">Lexique383</a></td><td>法语屈折形式与音位转写</td><td><span class="tag">CC BY 4.0</span></td></tr>
     <tr><td><a href="https://github.com/hermitdave/FrequencyWords">FrequencyWords (OpenSubtitles)</a></td><td>德 / 西 / 俄 / 意 / 葡 词头与词频</td><td><span class="tag">MIT</span></td></tr>
+    <tr><td><a href="https://github.com/k2-fsa/sherpa-onnx">sherpa-onnx</a></td><td>离线语音朗读（端侧 TTS 引擎）</td><td><span class="tag">Apache-2.0</span></td></tr>
     <tr><td>GLM（glm-5.3-flash）</td><td>德 / 西 / 俄 / 意 / 葡 中文释义</td><td><span class="tag">AI 生成内容</span></td></tr>
   </table>
   <p style="margin-top:16px;font-size:14px;color:var(--ink-soft)">※ 德 / 西 / 俄 / 意 / 葡词典包的全部或部分中文释义由 AI 生成，<b>正确性未经人工校验</b>，仅供参考；英 / 法 / 日 词典的释义来自上表开放词典数据。遇到可疑释义欢迎到 GitHub issue 反馈。</p>
@@ -263,11 +299,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section id="privacy"><div class="wrap">
   <div class="kicker">PRIVACY</div>
-  <h2>不收集任何数据</h2>
+  <h2>不收集数据，也不打扰你</h2>
   <div class="priv">
-    <p>无账号体系、无统计埋点、无广告追踪；查词完全在本地完成，生词与设置不出设备。
+    <p>无账号体系、无统计埋点、无广告追踪；查词完全在本地完成，生词、练习进度、语音偏好与设置都不出设备。
        可选的 AI 功能只在你主动使用时，把对应文本发送到你自己配置的服务地址。</p>
     <p style="margin-top:14px">完整条款见<a href="/privacy.html">隐私政策</a>。</p>
+    <div class="endcta">
+      <a class="btn solid" href="https://play.google.com/store/apps/details?id=com.felix021.podic">Android · Google Play</a>
+      <a class="btn ghost" href="https://apps.apple.com/app/podic-dictionary/id6814098026">iOS · App Store</a>
+      <a class="btn ghost" href="https://github.com/podic-dictionary/podic/releases/latest">APK 下载</a>
+    </div>
   </div>
 </div></section>
 
